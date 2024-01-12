@@ -45,8 +45,13 @@
             setTimeout(pulseText, 500)
         }
         requestAnimationFrame(pulseText)
-
-        sound.play()
+        
+        const playSound = () => {
+            sound.play()
+            playListener.removeEventListener("mousemove", playSound)
+        }
+        
+        const playListener = document.body.addEventListener("mousemove", playSound)
     </script>
 </body>
 
