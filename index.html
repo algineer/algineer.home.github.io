@@ -35,6 +35,7 @@
     </div>
     <script type="module" src= "main.js"></script>
     <script>
+        const sound = new Audio("ui_sci-fi-sound.mp3")
         const pulseText = () => {
             let text = document.querySelector("#info > h1")
             if (text.style.fontSize == '50px')
@@ -44,6 +45,8 @@
             setTimeout(pulseText, 500)
         }
         requestAnimationFrame(pulseText)
+
+        sound.play()
     </script>
 </body>
 
