@@ -2,30 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
+    <meta charset="utf-8">
+    <title>2024 Game Project</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            /* Align content to the top of the page */
-            min-height: 100vh;
             margin: 0;
+            background-color: black;
+        }
+        
+        #info {
+            position: absolute;
+            top: 25%;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+            display: block;
+            color: lime;
+        }
+        
+        h1 {
+            font-size: 50px;
         }
     </style>
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@v0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@v0.160.0/examples/jsm/" } }
+    </script>
 </head>
 
 <body>
-    <main>
-        <h1>LOOK AT THIS DOG</h1>
-        <img src="https://raw.githubusercontent.com/algineer/algineer.home.github.io/main/pos.jpg" width="200" height="250">
-        <img src="https://raw.githubusercontent.com/algineer/algineer.home.github.io/main/pos2.jpg" width="200" height="250">
-        <p>Image credit to the mommas!</p>
-        <a href="https://github.com/algineer/algineer.home.github.io/raw/main/better_modify_v.3.5.2.exe">Click to download Better Modify Tool<\a>
-    </main>
+    <div id="info">
+        <h1>Game Title</h1>
+    </div>
+    <script type="module">
+        import * as THREE from 'three'; const scene = new THREE.Scene(); const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); const renderer = new THREE.WebGLRenderer(); renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement); const geometry = new THREE.BoxGeometry(1, 1, 1); const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); const cube = new THREE.Mesh(geometry, material); scene.add(cube); camera.position.z
+        = 5; function animate() { requestAnimationFrame(animate); cube.rotation.x += 0.01; cube.rotation.y += 0.01; renderer.render(scene, camera); } animate();
+    </script>
+    <script>
+        const pulseText = () => {
+            let text = document.querySelector("#info > h1")
+            if (text.style.fontSize == '50px')
+                text.style.fontSize = '52px'
+            else
+                text.style.fontSize = '50px'
+            setTimeout(pulseText, 500)
+        }
+        requestAnimationFrame(pulseText)
+    </script>
 </body>
 
 </html>
